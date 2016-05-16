@@ -6,6 +6,7 @@
       '$log', '$localForage', '$http',
       function($log,$localForage, $http) {
         var self = this;
+        self.dblog=[];
         self.resetData=function(){
             $localForage.clear();
         }
@@ -29,7 +30,6 @@
               .then(
                   function(res){
                       self.addedJson = res.data.added;      
-                      console.log(self.addedJson);        
                       self.addJsonData(self.addedJson);       
                   }
               )
@@ -38,9 +38,7 @@
         self.addJsonData=function(json){
               angular.forEach(json, function(item) {
                   $localForage.setItem(item.surrogateId,item.name).then(function() {
-                    $localForage.getItem(item.surrogateId).then(function(data) {
-                      console.log("data", data);
-                    });
+                    self.dblog.push("item added to db: "+item.name);
                   });
               });
         }

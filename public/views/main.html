@@ -1,2 +1,9 @@
+
 <h1>Offline proof of concept</h1>
-<button ng-click="main.resetData()" class="btn btn-primary">Clear data</button>
+    <button ng-click="main.resetData()" class="btn btn-primary">Clear data</button>
+    <div class="alert alert-info">
+        <ul>
+            <li ng-repeat="message for main.dblog" ng-bind="message"></li>
+        </ul>
+    </div>
+</div>
