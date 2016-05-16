@@ -3,8 +3,8 @@
 
   ng.module('offlinePoc')
     .controller('MainController', [
-      '$log', '$localForage', '$http',
-      function($log,$localForage, $http) {
+      '$localForage', '$http',
+      function($localForage, $http) {
         var self = this;
         self.dblog=[];
         self.resetData=function(){
