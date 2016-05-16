@@ -9,11 +9,11 @@
         $http.get('json/init.json')
           .then(
               function(res){
-                self.initJson = res.data;                
+                self.initJson = res.data;      
+                console.log(self.initJson);          
               }
            )
         ;
-        console.log(self.initJson);
         $localForage.clear();
         $localForage.setItem('myName','Olivier Combe').then(function() {
             $localForage.getItem('myName').then(function(data) {
