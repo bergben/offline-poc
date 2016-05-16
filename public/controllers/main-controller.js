@@ -9,7 +9,7 @@
         $http.get('json/init.json')
           .then(
               function(res){
-                self.initJson = res.data;      
+                self.initJson = res.data.items;      
                 console.log(self.initJson);          
               }
            )
