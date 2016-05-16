@@ -3,11 +3,17 @@
 
   ng.module('offlinePoc')
     .controller('MainController', [
-      '$log', '$localForage',
-      function($log,$localForage) {
+      '$log', '$localForage', '$http',
+      function($log,$localForage, $http) {
         var self = this;
-        var json = require('../json/init.json');
-        console.log(json);
+        $http.get('json/init.json')
+          .then(
+              function(res){
+                self.initJson = res.data;                
+              }
+           )
+        ;
+        console.log(self.initJson);
         $localForage.clear();
         $localForage.setItem('myName','Olivier Combe').then(function() {
             $localForage.getItem('myName').then(function(data) {
