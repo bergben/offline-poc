@@ -37,11 +37,10 @@
         }
         self.addJsonData=function(json){
               angular.forEach(json, function(item) {
-                console.log(item);
-              });
-              $localForage.setItem('myName','Olivier Combe').then(function() {
-                  $localForage.getItem('myName').then(function(data) {
-                    console.log("data", data);
+                  $localForage.setItem(item.surrogateId,item.name).then(function() {
+                    $localForage.getItem(item.surrogateId).then(function(data) {
+                      console.log("data", data);
+                    });
                   });
               });
         }
