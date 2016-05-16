@@ -4,5 +4,6 @@
   ng.module('offlinePoc', [
       'ngResource',
       'ngRoute',
+      'LocalForageModule'
     ]);
 }(window.angular));

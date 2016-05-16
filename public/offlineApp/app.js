@@ -3,5 +3,6 @@
 
   ng.module('offline', [
       'ngRoute',
+      'LocalForageModule'
     ]);
 }(window.angular));

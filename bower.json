@@ -20,7 +20,9 @@
     "angular-route": "^1.5.5",
     "angular-resource": "~1.4.x",
     "bootstrap": "3.3.1",
-    "fontawesome": "~4.3.0"
+    "fontawesome": "~4.3.0",
+    "angular-localforage": "^1.2.5",
+    "localforage": "^1.4.2"
   },
   "resolutions": {
     "angular": "1.5.5"

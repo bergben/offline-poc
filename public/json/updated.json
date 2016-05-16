@@ -1,0 +1,16 @@
+{
+  "updated": [
+    {
+      "surrogateId": "i1",
+      "fields" : [
+        { "name" : "new Item 1 name"}
+      ]
+    },
+    {
+      "surrogateId": "i2",
+      "fields" : [
+        { "name" : "Item 2 is updated too!"}
+      ]
+    }
+  ]
+}

@@ -12,6 +12,8 @@
     <script type="application/javascript" src="./bower_components/angular/angular.min.js"></script>
     <script type="application/javascript" src="./bower_components/angular-route/angular-route.min.js"></script>
     <script type="application/javascript" src="./bower_components/angular-resource/angular-resource.min.js"></script>
+    <script type="application/javascript" src="./bower_components/localforage/dist/localforage.min.js"></script>
+    <script type="application/javascript" src="./bower_components/angular-localforage/dist/angular-localForage.min.js"></script>
     <script type="application/javascript" src="./app.js"></script>
     <script type="application/javascript" src="./app.config.js"></script>
     <script type="application/javascript" src="./app.route.js"></script>
@@ -24,14 +26,16 @@
           'content-url': '/offlineApp/offline.html', // show this when the user is offline
           'assets': [                 // define additional assets needed while offline:
             '/stylesheets/style.css',        // custom stylesheets,
-            '/offlineApp/offline.css',        // custom stylesheets,
+            '/offlineApp/css/offline.css',        // custom stylesheets,
             './bower_components/angular/angular.min.js',
             './bower_components/angular-route/angular-route.min.js',
-            '/offlineApp/main.html',
+            './bower_components/localforage/dist/localforage.min.js',
+            './bower_components/angular-localforage/dist/angular-localForage.min.js',
+            '/offlineApp/views/main.html',
             '/offlineApp/app.js',
             '/offlineApp/app.config.js',
             '/offlineApp/app.route.js',
-            '/offlineApp/main-controller.js',
+            '/offlineApp/js/main-controller.js'
           ],
           'service-worker-url': './upup.sw.min.js'
           });
