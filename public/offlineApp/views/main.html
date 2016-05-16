@@ -1,8 +1,8 @@
 <h1>Proof of concept seems to work!</h1>
 <div class="alert alert-info">
     <ul>
-        <li ng-repeat="(key, value) in main.items">
-            <b>ITEM</b>: surrogateId: {{key}}, name: {{value}}
+        <li ng-repeat="item in main.items">
+            <b>ITEM</b>: surrogateId: {{item.surrogateId}}, name: {{item.name}}
         </li>
     </ul>
 </div>

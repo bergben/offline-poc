@@ -8,7 +8,7 @@
         var self = this;
         self.items=[];
         $localForage.iterate(function(value, key) {
-          self.items.push({key:value});
+          self.items.push({"surrogateId":key, "name":value});
         }).then(function(data) {
           console.log(data);
         });
