@@ -28,7 +28,7 @@
             $http.get('json/added.json')
               .then(
                   function(res){
-                      self.addedJson = res.data.items;      
+                      self.addedJson = res.data.added;      
                       console.log(self.addedJson);        
                       self.addJsonData(self.addedJson);       
                   }
