@@ -3,10 +3,15 @@
 
   ng.module('offline')
     .controller('MainController', [
-      '$log',
-      function($log) {
+      '$log', '$localForage',
+      function($log, $localForage) {
         var self = this;
-        console.log("test yo");
+        self.items=[];
+        $localForage.iterate(function(value, key) {
+          self.items.push({key:value});
+        }).then(function(data) {
+          console.log(data);
+        });
       }
     ]);
 }(window.angular));
