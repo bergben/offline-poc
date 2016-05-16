@@ -19,8 +19,18 @@
     <script type="application/javascript" src="./upup.min.js"></script>
     <script>
           console.log("starting up");
+          UpUp.debug();
           UpUp.start({ 
-          'content': 'Custom offline content....',
+          'content-url': 'offlineApp/offline.html', // show this when the user is offline
+          'assets': [                 // define additional assets needed while offline:
+            'stylesheets/style.css',        // custom stylesheets,
+            './bower_components/angular/angular.min.js',
+            './bower_components/angular-route/angular-route.min.js',
+            'offlineApp/app.js',
+            'offlineApp/app.config.js',
+            'offlineApp/app.route.js',
+            'offlineApp/main-controller.js',
+          ],
           'service-worker-url': './upup.sw.min.js'
           });
     </script>
