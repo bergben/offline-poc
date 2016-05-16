@@ -7,7 +7,7 @@
       function($routeProvider) {
         $routeProvider
           .when('/', {
-            templateUrl: 'offlineApp/main.html',
+            templateUrl: '/offlineApp/main.html',
             controller: 'MainController',
             controllerAs: 'mainCtrl'
           })
