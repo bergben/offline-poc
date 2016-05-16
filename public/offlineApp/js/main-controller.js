@@ -10,7 +10,7 @@
         $localForage.iterate(function(value, key) {
           self.items.push({key:value});
         }).then(function(data) {
-          console.log(data );
+          console.log(data);
         });
       }
     ]);
