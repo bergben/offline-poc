@@ -6,11 +6,12 @@
       '$log', '$localForage',
       function($log,$localForage) {
         var self = this;
-        console.log("test yo");
+        var json = require('../json/init.json');
+        console.log(json);
+        $localForage.clear();
         $localForage.setItem('myName','Olivier Combe').then(function() {
             $localForage.getItem('myName').then(function(data) {
               console.log("data", data);
-              console.log($localForage.length());
             });
         });
       }
