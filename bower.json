@@ -21,5 +21,8 @@
     "angular-resource": "~1.4.x",
     "bootstrap": "3.3.1",
     "fontawesome": "~4.3.0"
+  },
+  "resolutions": {
+    "angular": "1.5.5"
   }
 }
