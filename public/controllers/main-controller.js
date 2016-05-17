@@ -68,9 +68,11 @@
         self.updateJsonData=function(json){
               angular.forEach(json, function(item) {
                   $localForage.getItem(item.surrogateId).then(function (itemToUpdate) {
-                        angular.forEach(item.fields, function(value, key) {
-                            console.log(value,key);
-                            self.dblog.push("item updated with surrogateId: "+item.surrogateId +" value for " +key +" = "+value);
+                        angular.forEach(item.fields, function(field) {
+                            self.dblog.push("item updated with surrogateId: "+item.surrogateId +" value for " +field.key +" = "+field.value);
+                            itemToUpdate[field.key]=field.value;
+                        });
+                        $localForage.setItem(item.surrogateId,itemToUpdate).then(function() {
                         });
                   });
               });
@@ -81,8 +83,16 @@
               self.initData();
           }
           else{
-             //sync
-             self.syncData();
+              $localForage.getItem('synced').then(function(synced) {
+                  if(!synced){
+                     self.syncData();
+                     $localForage.setItem('synced',true).then(function() {
+                     });
+                  }
+                  else{
+                      self.dblog.push("everything already up-to-date.");
+                  }
+              });
           }
         });
       }

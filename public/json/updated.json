@@ -3,13 +3,19 @@
     {
       "surrogateId": "i1",
       "fields" : [
-        { "name" : "new item 1 name"}
+        { 
+          "key" : "name",
+          "value": "new item 1 name"
+        }
       ]
     },
     {
       "surrogateId": "i2",
       "fields" : [
-        { "name" : "Item 2 is updated too!"}
+        { 
+          "key" : "name",
+          "value": "Item 2 is updated too!"
+        }
       ]
     }
   ]
