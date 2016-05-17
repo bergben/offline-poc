@@ -71,7 +71,6 @@
         self.updateJsonData=function(json){
               angular.forEach(json, function(item) {
                   $localForage.getItem(item.surrogateId).then(function (itemToUpdate) {
-                        console.log(itemToUpdate);
                         angular.forEach(item.fields, function(field) {
                             self.dblog.push("item updated with surrogateId: "+item.surrogateId +" value for " +field.key +" = "+field.value);
                             itemToUpdate[field.key]=field.value;
@@ -130,21 +129,12 @@
                 .iterate(function(item) {
                         if(item.size!=null){
                             self.totalDBSize+=item.size;
-                            console.log(item);
                         }
                     }
                  ).then(function(data) {
                  })
             ;
         }
-        function formatBytes(bytes,decimals) {
-            if(bytes == 0) return '0 Byte';
-            var k = 1000; // or 1024 for binary
-            var dm = decimals + 1 || 3;
-            var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-            var i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-       }
        function generateUUID(){
             var d = new Date().getTime();
             if(window.performance && typeof window.performance.now === "function"){

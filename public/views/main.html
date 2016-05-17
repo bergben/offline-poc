@@ -8,16 +8,17 @@
         Stop storing images
     </button>
     <button ng-click="main.getDBSize()" class="btn btn-primary">
-        Get total db size (may take a while)
+        Get total db size
     </button>
     <br /><br />
     <p class="alert alert-info" ng-show="main.totalDBSize>0">
+        This may take a while, depending on the size. <br />
         Hint: Only the size of the blobs is being counted. <br />
         <b>Total size</b>: {{main.totalDBSize | bytes}}
     </p>
     <div class="alert alert-info">
         <ul>
-            <li ng-repeat="message in main.dblog" ng-bind="message"></li>
+            <li ng-repeat="message in main.dblog track by $index" ng-bind="message"></li>
         </ul>
     </div>
 </div>
