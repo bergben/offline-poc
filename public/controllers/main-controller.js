@@ -107,10 +107,11 @@
         self.getRandomImage=function(){
             if(!self.storingImages)
                 return false;
-            return $http.get('https://unsplash.it/800/600/?random').then(
+            return $http.get('https://unsplash.it/800/600/?random',{responseType: 'arraybuffer'}).then(
                 function(res){
-                    if(res!==false){
+                        let blob = new Blob([res.data], {type: 'image/jpeg'});
                         console.log(res);
+                        console.log(blob);
                         self.getRandomImage();
                     }
                     else{
