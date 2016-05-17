@@ -3,7 +3,7 @@
 
   ng.module('offlinePoc')
     .controller('MainController', [
-      '$localForage', '$http',
+      '$localForage', '$http', 
       function($localForage, $http) {
         var self = this;
         self.dblog=[];
@@ -34,11 +34,44 @@
                   }
               )
             ;
+            $http.get('json/deleted.json')
+              .then(
+                  function(res){
+                      self.deletedJson = res.data.deleted; 
+                      self.deleteJsonData(self.deletedJson);          
+                  }
+              )
+            ;
+            $http.get('json/updated.json')
+              .then(
+                  function(res){
+                      self.updatedJson = res.data.updated;  
+                      self.updateJsonData(self.updatedJson);        
+                  }
+              )
+            ;
         }
         self.addJsonData=function(json){
               angular.forEach(json, function(item) {
                   $localForage.setItem(item.surrogateId,item.name).then(function() {
                     self.dblog.push("item added to db: "+item.name);
+                  });
+              });
+        }
+        self.deleteJsonData=function(json){
+              angular.forEach(json, function(surrogateId) {
+                  $localForage.removeItem(surrogateId).then(function() {
+                    self.dblog.push("item deleted with surrogateId: "+surrogateId);
+                  });
+              });
+        }
+        self.updateJsonData=function(json){
+              angular.forEach(json, function(item) {
+                  $localForage.getItem(item.surrogateId).then(function (itemToUpdate) {
+                        angular.forEach(item.fields, function(value, key) {
+                            console.log(value,key);
+                            self.dblog.push("item updated with surrogateId: "+item.surrogateId +" value for " +key +" = "+value);
+                        });
                   });
               });
         }
