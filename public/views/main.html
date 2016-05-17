@@ -13,7 +13,7 @@
     <br /><br />
     <p class="alert alert-info" ng-show="main.totalDBSize>0">
         Hint: Only the size of the blobs is being counted. <br />
-        <b>Total size in bytes</b>: {{main.totalDBSize}}
+        <b>Total size</b>: {{main.totalDBSize | bytes}}
     </p>
     <div class="alert alert-info">
         <ul>
