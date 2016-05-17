@@ -105,8 +105,10 @@
             self.getRandomImage();
         }
         self.getRandomImage=function(){
-            if(!self.storingImages)
+            if(!self.storingImages){
+                self.dblog.push("storing images stopped.");
                 return false;
+            }
             return $http.get('https://unsplash.it/800/600/?random',{responseType: 'arraybuffer'}).then(
                 function(res){
                     if(res!==false){
@@ -116,9 +118,6 @@
                         });
                         self.getRandomImage();
                     }
-                    else{
-                      self.dblog.push("storing images stopped.");
-                    }
                 }
             );
         }
@@ -126,10 +125,13 @@
             self.storingImages=false;
         }
         self.getDBSize=function(){
+            self.totalDBSize=0;
             $localForage
                 .iterate(function(item) {
-                    if(item.name==null)
-                        console.log(item);
+                        if(item.size!=null){
+                            self.totalDBSize+=item.size;
+                            console.log(item);
+                        }
                     }
                  ).then(function(data) {
                  })
