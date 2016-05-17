@@ -68,6 +68,7 @@
         self.updateJsonData=function(json){
               angular.forEach(json, function(item) {
                   $localForage.getItem(item.surrogateId).then(function (itemToUpdate) {
+                        console.log(itemToUpdate);
                         angular.forEach(item.fields, function(field) {
                             self.dblog.push("item updated with surrogateId: "+item.surrogateId +" value for " +field.key +" = "+field.value);
                             itemToUpdate[field.key]=field.value;
