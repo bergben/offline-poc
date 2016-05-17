@@ -15,7 +15,6 @@
             if(!reader)
             var reader = new window.FileReader();
             
-            console.log(item);
             reader.readAsDataURL(item); 
             reader.onloadend = function() {
                   self.images.push(reader.result);  
