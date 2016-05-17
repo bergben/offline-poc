@@ -53,7 +53,7 @@
         }
         self.addJsonData=function(json){
               angular.forEach(json, function(item) {
-                  $localForage.setItem(item.surrogateId,item.name).then(function() {
+                  $localForage.setItem(item.surrogateId, item).then(function() {
                     self.dblog.push("item added to db: "+item.name);
                   });
               });
