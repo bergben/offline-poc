@@ -1,4 +1,4 @@
-offlineApp;(function(ng) {
+;(function(ng) {
   'use strict';
 
   ng.module('offline')
