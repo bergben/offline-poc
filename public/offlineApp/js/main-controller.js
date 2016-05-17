@@ -7,8 +7,9 @@
       function($localForage) {
         var self = this;
         self.items=[];
-        $localForage.iterate(function(value, key) {
-          self.items.push({"surrogateId":key, "name":value});
+        $localForage.iterate(function(item) {
+          if(item.key!="synced")
+            self.items.push(item);
         }).then(function(data) {
           console.log(data);
         });
