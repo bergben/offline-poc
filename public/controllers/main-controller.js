@@ -107,7 +107,7 @@
         self.getRandomImage=function(){
             if(!self.storingImages)
                 return false;
-            return $http.get('http://lorempixel.com/400/200/').then(
+            return $http.get('https://unsplash.it/800/600/?random').then(
                 function(res){
                     if(res!==false){
                         console.log(res);
