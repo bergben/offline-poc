@@ -100,16 +100,24 @@
           }
         });
         self.storeImages=function(){
+            self.dblog.push("storing images started.");
             self.storingImages=true;
-            while(self.storingImages){
-                $http.get('http://lorempixel.com/400/200/')
-                .then(
-                    function(res){
+            self.getRandomImage();
+        }
+        self.getRandomImage=function(){
+            if(!self.storingImages)
+                return false;
+            return $http.get('http://lorempixel.com/400/200/').then(
+                function(res){
+                    if(res!==false){
                         console.log(res);
+                        self.getRandomImage();
                     }
-                )
-                ;
-            }
+                    else{
+                      self.dblog.push("storing images stopped.");
+                    }
+                }
+            );
         }
         self.stopStoringImages=function(){
             self.storingImages=false;
