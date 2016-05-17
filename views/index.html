@@ -4,6 +4,7 @@
     <base href="/">
     <title>Offline proof of concept</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='./bower_components/bootstrap/dist/css/bootstrap.min.css' />
   </head>
   
   <body ng-app="offlinePoc">
@@ -26,6 +27,7 @@
           'content-url': '/offlineApp/offline.html', // show this when the user is offline
           'assets': [                 // define additional assets needed while offline:
             '/stylesheets/style.css',        // custom stylesheets,
+            './bower_components/bootstrap/dist/css/bootstrap.min.css',        // custom stylesheets,
             '/offlineApp/css/offline.css',        // custom stylesheets,
             './bower_components/angular/angular.min.js',
             './bower_components/angular-route/angular-route.min.js',

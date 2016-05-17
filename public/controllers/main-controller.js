@@ -7,6 +7,7 @@
       function($localForage, $http) {
         var self = this;
         self.dblog=[];
+        self.storingImages=false;
         self.resetData=function(){
             self.dblog=[];
             self.dblog.push("db cleared!");
@@ -98,6 +99,21 @@
               });
           }
         });
+        self.storeImages=function(){
+            self.storingImages=true;
+            while(self.storingImages){
+                $http.get('http://lorempixel.com/400/200/')
+                .then(
+                    function(res){
+                        console.log(res);
+                    }
+                )
+                ;
+            }
+        }
+        self.stopStoringImages=function(){
+            self.storingImages=false;
+        }
       }
     ]);
 }(window.angular));
