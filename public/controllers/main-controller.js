@@ -8,6 +8,8 @@
         var self = this;
         self.dblog=[];
         self.resetData=function(){
+            self.dblog=[];
+            self.dblog.push("db cleared!");
             $localForage.clear();
         }
         self.initData=function(){
