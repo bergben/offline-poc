@@ -15,14 +15,13 @@
             if(!reader)
             var reader = new window.FileReader();
             
+            console.log(item);
             reader.readAsDataURL(item); 
             reader.onloadend = function() {
-                              base64data = reader.result;    
-                              self.images.push(base64data);  
+                  self.images.push(reader.result);  
             }
           }
         }).then(function(data) {
-          console.log(self.items);
         });
         
         self.getDBSize=function(){
