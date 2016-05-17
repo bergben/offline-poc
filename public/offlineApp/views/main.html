@@ -1,4 +1,13 @@
 <h1>Proof of concept seems to work!</h1>
+<button ng-click="main.getDBSize()" class="btn btn-primary">
+    Get total db size
+</button>
+<br /><br />
+<p class="alert alert-info" ng-show="main.totalDBSize>0">
+    This may take a while, depending on the size. <br />
+    Hint: Only the size of the blobs is being counted. <br />
+    <b>Total size</b>: {{main.totalDBSize | bytes}}
+</p>
 <br /><br />
 <div class="alert alert-info">
     <ul>
@@ -6,4 +15,10 @@
             <b>ITEM</b>: surrogateId: {{item.surrogateId}}, name: {{item.name}}
         </li>
     </ul>
+</div>
+
+<br /><br />
+<div class="alert alert-info">
+    First 10 images are shown below: <br />
+    <img data-ng-src="data:image/jpg;base64,{{image}}" ng-repeat="image in main.images">
 </div>
