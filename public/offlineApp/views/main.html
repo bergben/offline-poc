@@ -18,5 +18,5 @@
 <br />
 <div class="alert alert-info" ng-show="main.images.length>0">
     First 10 images are shown below: <br />
-    <img data-ng-src="{{image}}" class="img-responsive" ng-repeat="image in main.images | limitTo:10 track by $index ">
+    <img data-ng-src="{{image}}" class="img-responsive max-size" ng-repeat="image in main.images | limitTo:10 track by $index ">
 </div>
