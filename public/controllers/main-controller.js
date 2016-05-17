@@ -111,8 +111,9 @@
                 function(res){
                     if(res!==false){
                         let blob = new Blob([res.data], {type: 'image/jpeg'});
-                        console.log(res);
-                        console.log(blob);
+                        $localForage.setItem(generateUUID(), blob).then(function() {
+                            self.dblog.push("blob (image) added to db with size: "+blob.size);
+                        });
                         self.getRandomImage();
                     }
                     else{
@@ -123,6 +124,36 @@
         }
         self.stopStoringImages=function(){
             self.storingImages=false;
+        }
+        self.getDBSize=function(){
+            $localForage
+                .iterate(function(item) {
+                    if(item.name==null)
+                        console.log(item);
+                    }
+                 ).then(function(data) {
+                 })
+            ;
+        }
+        function formatBytes(bytes,decimals) {
+            if(bytes == 0) return '0 Byte';
+            var k = 1000; // or 1024 for binary
+            var dm = decimals + 1 || 3;
+            var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+            var i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+       }
+       function generateUUID(){
+            var d = new Date().getTime();
+            if(window.performance && typeof window.performance.now === "function"){
+                d += performance.now(); //use high-precision timer if available
+            }
+            var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = (d + Math.random()*16)%16 | 0;
+                d = Math.floor(d/16);
+                return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+            });
+            return uuid;
         }
       }
     ]);
