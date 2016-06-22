@@ -6,6 +6,10 @@
         { 
           "key" : "name",
           "value": "new item 1 name"
+        },
+        {
+          "key" : "surrogateId",
+          "value": "new-surrogate-Id-1"
         }
       ]
     },
@@ -15,6 +19,10 @@
         { 
           "key" : "name",
           "value": "Item 2 is updated too!"
+        }
+        {
+          "key" : "surrogateId",
+          "value": "new-surrogate-Id-2"
         }
       ]
     }
